@@ -15,4 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // for displaying index page
-Route::get('/', [AuthController::class, 'index'])->name('index');
+Route::get('index', [AuthController::class, 'index'])->name('index');
+
+// for user registration
+Route::post('register', [AuthController::class, 'register'])->name('patient.register');
+

@@ -128,15 +128,16 @@
             </div>
             <div class="row justify-content-center my-5">
                 <div class="col-lg-6">
-                    <form>
-                            <input type="hidden" class="form-control" id="patient">
+                    <form action="{{ route('patient.register') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="role" value="patient">
 
                         <label for="fullName" class="form-label">Full Name:</label>
                         <div class="mb-4 input-group">
                             <span class="input-group-text">
                                 <i class="bi bi-person-fill"></i>
                             </span>
-                            <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name">
+                            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter Full Name">
                         </div>
 
                         <label for="gender" class="form-label">Gender:</label>
@@ -144,7 +145,7 @@
                             <span class="input-group-text">
                                 <i class="bi bi-person-fill"></i>
                             </span>
-                            <select class="form-select" id="gender">
+                            <select class="form-select" id="gender" name="gender">
                                 <option value="" disabled selected>--Select Gender--</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -156,7 +157,7 @@
                             <span class="input-group-text">
                                 <i class="bi bi-telephone-minus-fill"></i>
                             </span>
-                            <input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number">
                         </div>
 
                         <label for="email" class="form-label">Email Address:</label>
@@ -164,7 +165,7 @@
                             <span class="input-group-text">
                                 <i class="bi bi-envelope-fill"></i>
                             </span>
-                            <input type="text" class="form-control" id="email" placeholder="Enter Email Address">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email Address">
                         </div>
 
                         <label for="password" class="form-label">Password:</label>
@@ -172,7 +173,7 @@
                             <span class="input-group-text">
                                 <i class="bi bi-lock-fill"></i>
                             </span>
-                            <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
                         </div>
 
                         <label for="confirmPassword" class="form-label">Confirm Password:</label>
@@ -180,11 +181,11 @@
                             <span class="input-group-text">
                                 <i class="bi bi-lock-fill"></i>
                             </span>
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
                         </div>
 
                         <div class="mb-4 text-center">
-                            <button type="submit" class="btn btn-secondary">Submit</button>
+                            <button type="submit" class="btn btn-secondary" name="submit">Submit</button>
                         </div>
                         <p class="text-center mt-3">Already have an account?<a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#signin-modal"> Sigin</a></p>
                     </form>

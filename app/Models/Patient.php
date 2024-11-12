@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Patient extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,6 +17,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'role',
+        'full_name',
+        'gender',
+        'phone_number',
         'email',
         'password'
     ];
@@ -40,4 +43,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Set the default role to 'patient'.
+     *
+     * @var string
+     */
+    protected static function booted()
+    {
+        static::creating(function ($patient) {
+            if (!$patient->role) {
+                $patient->role = 'patient'; 
+            }
+        });
+    }
 }
