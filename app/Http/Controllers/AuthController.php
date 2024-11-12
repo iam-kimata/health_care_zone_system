@@ -15,6 +15,7 @@ class AuthController extends Controller
         return view('index');
     }
 
+    // for user registration
     public function register(Request $request)
     {
         // Validate request data
