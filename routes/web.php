@@ -35,3 +35,15 @@ Route::get('bookAppointment', [PatientController::class, 'bookAppointment'])->na
 
 // for displaying book now page
 Route::get('bookNow', [PatientController::class, 'bookNow'])->name('bookNow');
+
+// for displaying feedback page
+Route::get('feedback', [PatientController::class, 'feedback'])->name('feedback');
+
+// for displaying warning patient  page
+Route::get('warningPatientPage', [PatientController::class, 'warningPatientPage'])->name('warningPatientPage');
+
+// for displaying patient suggestion page
+Route::get('patientSuggestion', [PatientController::class, 'patientSuggestion'])->name('patientSuggestion');
+
+// for displaying change password page
+Route::get('changePassword', [PatientController::class, 'changePassword'])->name('changePassword');
