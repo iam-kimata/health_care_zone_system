@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 // for displaying index page
-Route::get('index', [AuthController::class, 'index'])->name('index');
+Route::get('/', [AuthController::class, 'index'])->name('index');
 
 // for user registration
 Route::post('register', [AuthController::class, 'register'])->name('patient.register');
 
+// for displaying dashboard page
+Route::get('dashboard', [PatientController::class, 'dashboard'])->name('dashboard');
+
+// for displaying virtual consultation page
+Route::get('virtualConsultation', [PatientController::class, 'virtualConsultation'])->name('virtualConsultation');
+
+// for displaying chatting page
+Route::get('chatting', [PatientController::class, 'chatting'])->name('chatting');
+
+// for displaying book appointment page
+Route::get('bookAppointment', [PatientController::class, 'bookAppointment'])->name('bookAppointment');
+
+// for displaying book now page
+Route::get('bookNow', [PatientController::class, 'bookNow'])->name('bookNow');
