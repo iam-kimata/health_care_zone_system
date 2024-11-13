@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -47,3 +48,24 @@ Route::get('patientSuggestion', [PatientController::class, 'patientSuggestion'])
 
 // for displaying change password page
 Route::get('changePassword', [PatientController::class, 'changePassword'])->name('changePassword');
+
+// for displaying doctor dashboard page
+Route::get('doctorDashboard', [DoctorController::class, 'doctorDashboard'])->name('doctorDashboard');
+
+// for displaying reject page
+Route::get('reject', [DoctorController::class, 'reject'])->name('reject');
+
+// for displaying doctor chatting page
+Route::get('doctorChatting', [DoctorController::class, 'doctorChatting'])->name('doctorChatting');
+
+// for displaying accepted booking page
+Route::get('acceptedBooking', [DoctorController::class, 'acceptedBooking'])->name('acceptedBooking');
+
+// for displaying warning doctor page
+Route::get('warningDoctorPage', [DoctorController::class, 'warningDoctorPage'])->name('warningDoctorPage');
+
+// for displaying doctor suggestion page
+Route::get('doctorSuggestion', [DoctorController::class, 'doctorSuggestion'])->name('doctorSuggestion');
+
+// for displaying doctor change password page
+Route::get('doctorChangePassword', [DoctorController::class, 'doctorChangePassword'])->name('doctorChangePassword');
