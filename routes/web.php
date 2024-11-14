@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AuthController;
@@ -69,3 +70,33 @@ Route::get('doctorSuggestion', [DoctorController::class, 'doctorSuggestion'])->n
 
 // for displaying doctor change password page
 Route::get('doctorChangePassword', [DoctorController::class, 'doctorChangePassword'])->name('doctorChangePassword');
+
+// for displaying admin dashboard page
+Route::get('adminDashboard', [AdminController::class, 'adminDashboard'])->name('adminDashboard');
+
+// for displaying update reviews page
+Route::get('updateReviews', [AdminController::class, 'updateReviews'])->name('updateReviews');
+
+// for displaying register doctor page
+Route::get('registerDoctor', [AdminController::class, 'registerDoctor'])->name('registerDoctor');
+
+// for displaying patients page
+Route::get('patients', [AdminController::class, 'patients'])->name('patients');
+
+// for displaying update patient page
+Route::get('updatePatient', [AdminController::class, 'updatePatient'])->name('updatePatient');
+
+// for displaying warning patient page
+Route::get('warningPatient', [AdminController::class, 'warningPatient'])->name('warningPatient');
+
+// for displaying doctors page
+Route::get('doctors', [AdminController::class, 'doctors'])->name('doctors');
+
+// for displaying update doctor page
+Route::get('updateDoctor', [AdminController::class, 'updateDoctor'])->name('updateDoctor');
+
+// for displaying warning doctor page
+Route::get('warningDoctor', [AdminController::class, 'warningDoctor'])->name('warningDoctor');
+
+// for displaying suggestion page
+Route::get('suggestion', [AdminController::class, 'suggestion'])->name('suggestion');
