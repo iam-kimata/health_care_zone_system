@@ -6,13 +6,15 @@
         </h4>
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <form>
+                <form action="{{ route('updatePatient', $patient->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
                     <label for="name" class="form-label">Full Name:</label>
                     <div class="mb-4 input-group">
                         <span class="input-group-text">
                             <i class="bi bi-person-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" class="form-control" name="full_name" value="{{ $patient->full_name }}">
                     </div>
 
                     <label for="phoneNumber" class="form-label">Phone Number:</label>
@@ -20,7 +22,7 @@
                         <span class="input-group-text">
                             <i class="bi bi-telephone-minus-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="phoneNumber">
+                        <input type="text" class="form-control" name="phoneNumber" value="{{ $patient->phone_number }}">
                     </div>
 
                     <label for="email" class="form-label">Email Address:</label>
@@ -28,7 +30,7 @@
                         <span class="input-group-text">
                             <i class="bi bi-envelope-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="email">
+                        <input type="text" class="form-control" name="email" value="{{ $patient->email }}">
                     </div>
 
                     <label for="gender" class="form-label">Gender:</label>
@@ -36,10 +38,10 @@
                         <span class="input-group-text">
                             <i class="bi bi-person-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="gender">
+                        <input type="text" class="form-control" name="gender" value="{{ $patient->gender }}">
                     </div>
                     <div class="mb-4 text-center">
-                        <button type="submit" class="btn btn-secondary">Click to Update</button>
+                        <button type="submit" name="submit" class="btn btn-secondary">Click to Update</button>
                     </div>
                 </form>
             </div>

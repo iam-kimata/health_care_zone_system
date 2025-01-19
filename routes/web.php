@@ -81,6 +81,9 @@ Route::post('registerDoctor', [AdminController::class, 'registerDoctor'])->name(
 Route::get('patients', [AdminController::class, 'patients'])->name('patients');
 
 // for displaying update patient page
+Route::get('updatePatientPage', [AdminController::class, 'updatePatientPage'])->name('updatePatientPage');
+
+// for admin to update patient
 Route::get('updatePatient', [AdminController::class, 'updatePatient'])->name('updatePatient');
 
 // for displaying warning patient page

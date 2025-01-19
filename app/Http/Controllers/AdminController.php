@@ -96,10 +96,12 @@ class AdminController extends Controller
     }
 
     // for displaying update patient page
-    public function updatePatient()
+    public function updatePatientPage()
     {
         return view('admin.update_patient');
     }
+
+    // for admin to update patient
 
     // for displaying warning patient page
     public function warningPatient()

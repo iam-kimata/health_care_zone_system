@@ -28,7 +28,7 @@
                                         <td>{{ $patient->email }}</td>
                                         <td>{{ $patient->gender ?? 'N/A' }}</td>
                                         <td>
-                                            <a href="{{ url('/updatePatient', $patient->id) }}" class="btn btn-success btn-sm" role="button">Update</a>
+                                            <a href="{{ url('/updatePatientPage', $patient->id) }}" class="btn btn-success btn-sm" role="button">Update</a>
                                         </td>
                                         <td>
                                             <a href="{{ url('/warningPatient', $patient->id) }}" class="btn btn-warning btn-sm" role="button">Warning</a>
