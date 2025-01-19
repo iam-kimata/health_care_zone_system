@@ -20,56 +20,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td>0765435212</td>
-                                    <td>johndoe@example.com</td>
-                                    <td>Male</td>
-                                    <td><a href="/updatePatient" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningPatient" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jane Smith</td>
-                                    <td>0765435212</td>
-                                    <td>janesmith@example.com</td>
-                                    <td>Female</td>
-                                    <td><a href="/updatePatient" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningPatient" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Emily Brown</td>
-                                    <td>0765435212</td>
-                                    <td>emilybrown@example.com</td>
-                                    <td>Female</td>
-                                    <td><a href="/updatePatient" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningPatient" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Michael Johnson</td>
-                                    <td>0765435212</td>
-                                    <td>michaeljohnson@example.com</td>
-                                    <td>Male</td>
-                                    <td><a href="/updatePatient" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningPatient" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Sarah Lee</td>
-                                    <td>0765435212</td>
-                                    <td>sarahlee@example.com</td>
-                                    <td>Female</td>
-                                    <td><a href="/updatePatient" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningPatient" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
+                                @foreach ($patients as $index => $patient)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $patient->full_name }}</td>
+                                        <td>{{ $patient->phone_number ?? 'N/A' }}</td>
+                                        <td>{{ $patient->email }}</td>
+                                        <td>{{ $patient->gender ?? 'N/A' }}</td>
+                                        <td>
+                                            <a href="{{ url('/updatePatient', $patient->id) }}" class="btn btn-success btn-sm" role="button">Update</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/warningPatient', $patient->id) }}" class="btn btn-warning btn-sm" role="button">Warning</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ url('/deletePatient', $patient->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

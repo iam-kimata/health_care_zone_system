@@ -82,10 +82,17 @@ class AdminController extends Controller
         return response()->json(['success' => 'Account created successfully']);
     }
 
-    // for displaying patients page
-    public function patients()
+    // for displaying patients
+    public function patients(Request $request)
     {
-        return view('admin.patients');
+        // Define the query to fetch patients
+        $query = User::where('role', 'Patient');
+
+         // Fetch the patients
+        $patients = $query->orderBy('created_at', 'desc')->get();
+
+        // Pass the correct variable to the view
+        return view('admin.patients', compact('patients'));
     }
 
     // for displaying update patient page
@@ -101,10 +108,18 @@ class AdminController extends Controller
     }
 
     // for displaying doctors page
-    public function doctors()
+    public function doctors(Request $request)
     {
-        return view('admin.doctors');
+        // Define the query to fetch doctors
+        $query = User::where('role', 'Doctor');
+
+        // Fetch the doctors
+        $doctors = $query->orderBy('created_at', 'desc')->get();
+
+        // Pass the correct variable to the view
+        return view('admin.doctors', compact('doctors'));
     }
+
 
     // for displaying update doctor page
     public function updateDoctor()

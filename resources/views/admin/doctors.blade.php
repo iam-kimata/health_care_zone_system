@@ -20,56 +20,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td>0765435212</td>
-                                    <td>johndoe@example.com</td>
-                                    <td>4.3</td>
-                                    <td><a href="/updateDoctor" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningDoctor" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jane Smith</td>
-                                    <td>0765435212</td>
-                                    <td>janesmith@example.com</td>
-                                    <td>4.4</td>
-                                    <td><a href="/updateDoctor" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningDoctor" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Emily Brown</td>
-                                    <td>0765435212</td>
-                                    <td>emilybrown@example.com</td>
-                                    <td>3.7</td>
-                                    <td><a href="/updateDoctor" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningDoctor" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Michael Johnson</td>
-                                    <td>0765435212</td>
-                                    <td>michaeljohnson@example.com</td>
-                                    <td>4.0</td>
-                                    <td><a href="/updateDoctor" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningDoctor" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Sarah Lee</td>
-                                    <td>0765435212</td>
-                                    <td>sarahlee@example.com</td>
-                                    <td>4.4</td>
-                                    <td><a href="/updateDoctor" class="btn btn-success btn-sm" role="button">Update</a></td>
-                                    <td><a href="/warningDoctor" class="btn btn-warning btn-sm" role="button">Warning</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" role="button">Delete</a></td>
-                                </tr>
+                                @foreach ($doctors as $index => $doctor)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $doctor->full_name }}</td>
+                                        <td>{{ $doctor->phone_number ?? 'N/A' }}</td>
+                                        <td>{{ $doctor->email }}</td>
+                                        <td>{{ $doctor->rating ?? 'N/A' }}</td>
+                                        <td>
+                                            <a href="{{ url('/updateDoctor', $doctor->id) }}" class="btn btn-success btn-sm" role="button">Update</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/warningDoctor', $doctor->id) }}" class="btn btn-warning btn-sm" role="button">Warning</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ url('/deleteDoctor', $doctor->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
