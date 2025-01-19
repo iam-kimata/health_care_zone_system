@@ -137,7 +137,7 @@
                             <span class="input-group-text">
                                 <i class="bi bi-person-fill"></i>
                             </span>
-                            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter Full Name">
+                            <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter Full Name">
                         </div>
 
                         <label for="gender" class="form-label">Gender:</label>
@@ -157,7 +157,7 @@
                             <span class="input-group-text">
                                 <i class="bi bi-telephone-minus-fill"></i>
                             </span>
-                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number">
+                            <input type="text" class="form-control" id="phoneNumber" name="phone_number" placeholder="Enter Phone Number">
                         </div>
 
                         <label for="email" class="form-label">Email Address:</label>
@@ -181,7 +181,7 @@
                             <span class="input-group-text">
                                 <i class="bi bi-lock-fill"></i>
                             </span>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+                            <input type="password" class="form-control" id="confirmPassword" name="password_confirmation" placeholder="Confirm Password">
                         </div>
 
                         <div class="mb-4 text-center">
@@ -203,13 +203,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <!-- Show any general error messages stored in the session (flashed) -->
+                    @if(session('error'))
+                        <div class="text-danger text-center">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    <form action="{{ route('login') }}" method="POST">
+                        @csrf
                         <label for="email" class="form-label">Username:</label>
                         <div class="mb-4 input-group">
                             <span class="input-group-text">
                                 <i class="bi bi-envelope-fill"></i>
                             </span>
-                            <input type="text" class="form-control" id="email" placeholder="Enter Username">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Username" value="{{ old('email') }}" required>
                         </div>
 
                         <label for="password" class="form-label">Password:</label>
@@ -217,9 +224,9 @@
                             <span class="input-group-text">
                                 <i class="bi bi-lock-fill"></i>
                             </span>
-                            <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
                         </div>
-                        <button class="btn btn-primary w-100">Signin</button>
+                        <button class="btn btn-primary w-100" name="submit">Signin</button>
                     </form>
                 </div>
             </div>

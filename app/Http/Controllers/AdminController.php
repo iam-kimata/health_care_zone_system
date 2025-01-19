@@ -2,26 +2,84 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    // for displaying dashboard page
+    // for displaying dashboard functionality
     public function adminDashboard()
     {
-        return view('admin.dashboard');
-    }
+        // Count total patients
+        $totalPatients = User::where('role', 'Patient')->count();
 
-    // for displaying update reviews page
-    public function updateReviews()
-    {
-        return view('admin.update_reviews');
+        // Count total doctors
+        $totalDoctors = User::where('role', 'Doctor')->count();
+
+        // Count total accepted bookings
+        $totalAcceptedBookings = Booking::where('status', 'Accepted')->count();
+
+        // Count total rejected bookings
+        $totalRejectedBookings = Booking::where('status', 'Rejected')->count();
+
+        // Fetch all bookings with patient and doctor information
+        $data = Booking::with(['patient', 'doctor'])->orderBy('created_at', 'desc')->get();
+
+        return view('admin.dashboard', compact('data', 'totalPatients', 'totalDoctors', 'totalAcceptedBookings', 'totalRejectedBookings'));
+
     }
 
     // for displaying register doctor page
-    public function registerDoctor()
+    public function registerDoctorPage()
     {
         return view('admin.register_doctor');
+    }
+
+    // for admin to register doctor
+    public function registerDoctor(Request $request)
+    {
+        // Validate request data
+        $validator = Validator::make($request->all(), [
+            'fullName' => 'required|string|max:255',
+            'phoneNumber' => 'required|string|max:15',
+            'email' => 'required|string|email|max:255|unique:users',
+            'rating' => 'required|string|max:15',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // If validation fails, redirect back with errors
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('assets/images/uploaded'), $imageName);
+            $imagePath = 'assets/images/uploaded/' . $imageName;
+        } else {
+            $imagePath = null;
+        }
+
+        // Create and save the new user
+        User::create([
+            'full_name' => $request->fullName,
+            'phone_number' => $request->phoneNumber,
+            'email' => $request->email,
+            'rating' => $request->rating,
+            'image' => $imagePath,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Return a success message after registration
+        return response()->json(['success' => 'Account created successfully']);
     }
 
     // for displaying patients page

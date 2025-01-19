@@ -31,7 +31,6 @@
                         </div>
                     </div>
                 </div>
-                <a href="/virtualConsultation" class="btn btn-dark btn-sm mt-3" role="button">Go Back</a>
             </div>
         </div>
     </div>

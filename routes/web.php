@@ -23,17 +23,14 @@ Route::get('/', [AuthController::class, 'index'])->name('index');
 // for user registration
 Route::post('register', [AuthController::class, 'register'])->name('patient.register');
 
+//for user login
+Route::post('login', [AuthController::class, 'login'] )->name('login');
+
 // for displaying dashboard page
 Route::get('dashboard', [PatientController::class, 'dashboard'])->name('dashboard');
 
-// for displaying virtual consultation page
-Route::get('virtualConsultation', [PatientController::class, 'virtualConsultation'])->name('virtualConsultation');
-
 // for displaying chatting page
 Route::get('chatting', [PatientController::class, 'chatting'])->name('chatting');
-
-// for displaying book appointment page
-Route::get('bookAppointment', [PatientController::class, 'bookAppointment'])->name('bookAppointment');
 
 // for displaying book now page
 Route::get('bookNow', [PatientController::class, 'bookNow'])->name('bookNow');
@@ -71,14 +68,14 @@ Route::get('doctorSuggestion', [DoctorController::class, 'doctorSuggestion'])->n
 // for displaying doctor change password page
 Route::get('doctorChangePassword', [DoctorController::class, 'doctorChangePassword'])->name('doctorChangePassword');
 
-// for displaying admin dashboard page
+// for displaying admin dashboard
 Route::get('adminDashboard', [AdminController::class, 'adminDashboard'])->name('adminDashboard');
 
-// for displaying update reviews page
-Route::get('updateReviews', [AdminController::class, 'updateReviews'])->name('updateReviews');
-
 // for displaying register doctor page
-Route::get('registerDoctor', [AdminController::class, 'registerDoctor'])->name('registerDoctor');
+Route::get('registerDoctorPage', [AdminController::class, 'registerDoctorPage'])->name('registerDoctorPage');
+
+// for admin to register doctor
+Route::post('registerDoctor', [AdminController::class, 'registerDoctor'])->name('doctor.register');
 
 // for displaying patients page
 Route::get('patients', [AdminController::class, 'patients'])->name('patients');

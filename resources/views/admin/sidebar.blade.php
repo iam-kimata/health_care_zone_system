@@ -71,8 +71,7 @@
             </h5>
             <hr style="border-bottom: 1px solid #dee2e6">
             <a href="/adminDashboard" class="text-light text-decoration-none d-block"><i class="bi bi-house"></i>Dashboard</a>
-            <a href="/updateReviews" class="text-light text-decoration-none d-block"><i class="bi bi-pencil"></i>Update Reviews</i></a>
-            <a href="/registerDoctor" class="text-light text-decoration-none d-block"><i class="bi bi-person-plus"></i>Register Doctor</a>
+            <a href="/registerDoctorPage" class="text-light text-decoration-none d-block"><i class="bi bi-person-plus"></i>Register Doctor</a>
             <a href="/patients" class="text-light text-decoration-none d-block"><i class="bi bi-people"></i>Patients</a>
             <a href="/doctors" class="text-light text-decoration-none d-block"><i class="bi bi-people"></i>Doctors</a>
             <a href="/suggestion" class="text-light text-decoration-none d-block"><i class="bi bi-info-circle"></i>Suggestions</a>

@@ -5,8 +5,80 @@
         <div class="d-flex flex-column align-items-center">
             <p class="lead">Hi! Aloyce Kimata</p>
             <p class="lead">How Can I Help You Today?</p>
-            <a href="/virtualConsultation" class="btn btn-primary mt-3 mb-3 w-75">Virtual Consultation</a>
-            <a href="/bookAppointment" class="btn btn-secondary mt-3 w-75">Book Appointment</a>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-10">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <table class="table table-sm table-light table-bordered table-striped">
+                            <thead class="text-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Image</th>
+                                    <th>Doctor Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Rating</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><img src="{{ asset('assets/images/man.jpeg') }}" alt="Dr. John Doe" class="img-fluid" style="width: 50px; height: 50px;"></td>
+                                    <td>Dr. John Doe</td>
+                                    <td>0765435212</td>
+                                    <td>johndoe@example.com</td>
+                                    <td>4.5</td>
+                                    <td><a href="/chatting" class="btn btn-primary btn-sm" role="button">Start Chatting</a></td>
+                                    <td><a href="/bookNow" class="btn btn-secondary btn-sm" role="button">Book Now</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><img src="{{ asset('assets/images/man.jpeg') }}" alt="Dr. John Doe" class="img-fluid" style="width: 50px; height: 50px;"></td>
+                                    <td>Dr. Jane Smith</td>
+                                    <td>0765435212</td>
+                                    <td>janesmith@example.com</td>
+                                    <td>4.7</td>
+                                    <td><a href="/chatting" class="btn btn-primary btn-sm" role="button">Start Chatting</a></td>
+                                    <td><a href="/bookNow" class="btn btn-secondary btn-sm" role="button">Book Now</a></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><img src="{{ asset('assets/images/man.jpeg') }}" alt="Dr. John Doe" class="img-fluid" style="width: 50px; height: 50px;"></td>
+                                    <td>Dr. Emily Brown</td>
+                                    <td>0765435212</td>
+                                    <td>emilybrown@example.com</td>
+                                    <td>4.8</td>
+                                    <td><a href="/chatting" class="btn btn-primary btn-sm" role="button">Start Chatting</a></td>
+                                    <td><a href="/bookNow" class="btn btn-secondary btn-sm" role="button">Book Now</a></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><img src="{{ asset('assets/images/man.jpeg') }}" alt="Dr. John Doe" class="img-fluid" style="width: 50px; height: 50px;"></td>
+                                    <td>Dr. Michael Johnson</td>
+                                    <td>0765435212</td>
+                                    <td>michaeljohnson@example.com</td>
+                                    <td>4.6</td>
+                                    <td><a href="/chatting" class="btn btn-primary btn-sm" role="button">Start Chatting</a></td>
+                                    <td><a href="/bookNow" class="btn btn-secondary btn-sm" role="button">Book Now</a></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><img src="{{ asset('assets/images/man.jpeg') }}" alt="Dr. John Doe" class="img-fluid" style="width: 50px; height: 50px;"></td>
+                                    <td>Dr. Sarah Lee</td>
+                                    <td>0765435212</td>
+                                    <td>sarahlee@example.com</td>
+                                    <td>4.9</td>
+                                    <td><a href="/chatting" class="btn btn-primary btn-sm" role="button">Start Chatting</a></td>
+                                    <td><a href="/bookNow" class="btn btn-secondary btn-sm" role="button">Book Now</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

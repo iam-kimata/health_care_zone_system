@@ -6,15 +6,16 @@
         </h4>
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <form>
-                        <input type="hidden" class="form-control" id="doctor">
+                <form action="{{ route('doctor.register') }}" method="POST">
+                    @csrf
+                    <input type="hidden" class="form-control" id="doctor">
 
                     <label for="name" class="form-label">Full Name:</label>
                     <div class="mb-4 input-group">
                         <span class="input-group-text">
                             <i class="bi bi-person-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="name" placeholder="Enter Full Name">
+                        <input type="text" class="form-control" id="name" name="full_name" placeholder="Enter Full Name">
                     </div>
 
                     <label for="phoneNumber" class="form-label">Phone Number:</label>
@@ -22,7 +23,7 @@
                         <span class="input-group-text">
                             <i class="bi bi-telephone-minus-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
+                        <input type="text" class="form-control" id="phoneNumber" name="phone_number" placeholder="Enter Phone Number">
                     </div>
 
                     <label for="email" class="form-label">Email Address:</label>
@@ -30,7 +31,7 @@
                         <span class="input-group-text">
                             <i class="bi bi-envelope-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="email" placeholder="Enter Email Address">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email Address">
                     </div>
 
                     <label for="rating" class="form-label">Rating:</label>
@@ -38,7 +39,7 @@
                         <span class="input-group-text">
                             <i class="bi bi-star-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="rating" placeholder="Enter Rating">
+                        <input type="text" class="form-control" id="rating" name="rating" placeholder="Enter Rating">
                     </div>
 
                     <label for="image" class="form-label">Image:</label>
@@ -46,7 +47,7 @@
                         <span class="input-group-text">
                             <i class="bi bi-image-fill"></i>
                         </span>
-                        <input type="file" class="form-control" id="image">
+                        <input type="file" class="form-control" id="image" name="image">
                     </div>
 
                     <label for="password" class="form-label">Password:</label>
@@ -54,7 +55,7 @@
                         <span class="input-group-text">
                             <i class="bi bi-lock-fill"></i>
                         </span>
-                        <input type="text" value="HCZ 123" class="form-control" id="password" disabled>
+                        <input type="text" value="HCZ 123" class="form-control" id="password" name="password" disabled>
                     </div>
                     <div class="mb-4 text-center">
                         <button type="submit" class="btn btn-secondary">Click to Register</button>

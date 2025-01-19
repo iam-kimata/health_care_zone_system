@@ -22,7 +22,6 @@
                         </span>
                         <input type="time" class="form-control" id="appointmentTime" required>
                     </div>
-                    <a href="/bookAppointment" class="btn btn-dark btn-sm" role="button">Go Back</a>
 
                     <div class="mb-4 text-center">
                         <button type="submit" class="btn btn-secondary">Submit</button>

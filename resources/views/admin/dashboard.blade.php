@@ -1,14 +1,14 @@
     @include('admin.sidebar')
 
     <div class="container mt-5 me-5">
-        <h1 class="text-center mb-4">ADMIN DASHBOARD</h1>
+        <h2 class="text-center mb-4">ADMIN DASHBOARD</h2>
     <div class="row justify-content-center ms-lg-5">
         <!-- Total Patient Card -->
         <div class="col-md-3 mb-4">
             <div class="card text-white bg-primary custom-margin">
                 <div class="card-body text-center">
                     <h5 class="card-title"><i class="bi bi-people"></i> Total Patients</h5>
-                    <p class="card-text">50</p>
+                    <p class="card-text">{{ $totalPatients }}</p>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="card text-white bg-warning" style="min-width: 200px;">
                 <div class="card-body text-center">
                     <h5 class="card-title"><i class="bi bi-people"></i> Total Doctors</h5>
-                    <p class="card-text">30</p>
+                    <p class="card-text">{{ $totalDoctors }}</p>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
             <div class="card text-white bg-success" style="min-width: 200px;">
                 <div class="card-body text-center">
                     <h5 class="card-title"><i class="bi bi-calendar-check"></i> Accepted Bookings</h5>
-                    <p class="card-text">30</p>
+                    <p class="card-text">{{ $totalAcceptedBookings }}</p>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="card text-white bg-danger" style="min-width: 200px;">
                 <div class="card-body text-center">
                     <h5 class="card-title"><i class="bi bi-calendar-x"></i> Rejected Bookings</h5>
-                    <p class="card-text">20</p>
+                    <p class="card-text">{{ $totalRejectedBookings }}</p>
                 </div>
             </div>
         </div>
@@ -63,56 +63,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>0765435212</td>
-                                <td>johndoe@example.com</td>
-                                <td>13-09-2024</td>
-                                <td>02:30</td>
-                                <td>Jane Smith</td>
-                                <td class="text-success">Accepted</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jane Smith</td>
-                                <td>0765435212</td>
-                                <td>janesmith@example.com</td>
-                                <td>13-09-2024</td>
-                                <td>02:30</td>
-                                <td>Jane Smith</td>
-                                <td class="text-success">Accepted</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Emily Brown</td>
-                                <td>0765435212</td>
-                                <td>emilybrown@example.com</td>
-                                <td>13-09-2024</td>
-                                <td>02:30</td>
-                                <td>Jane Smith</td>
-                                <td class="text-success">Accepted</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Michael Johnson</td>
-                                <td>0765435212</td>
-                                <td>michaeljohnson@example.com</td>
-                                <td>13-09-2024</td>
-                                <td>02:30</td>
-                                <td>Jane Smith</td>
-                                <td class="text-danger">Rejected</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Sarah Lee</td>
-                                <td>0765435212</td>
-                                <td>sarahlee@example.com</td>
-                                <td>13-09-2024</td>
-                                <td>02:30</td>
-                                <td>Jane Smith</td>
-                                <td class="text-danger">Rejected</td>
-                            </tr>
+                            @foreach ($data as $index => $booking)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $booking->user->name ?? 'N/A' }}</td>
+                                    <td>{{ $booking->user->phone ?? 'N/A' }}</td>
+                                    <td>{{ $booking->user->email ?? 'N/A' }}</td>
+                                    <td>{{ $booking->appointment_date }}</td>
+                                    <td>{{ $booking->appointment_time }}</td>
+                                    <td>{{ $booking->doctor->name ?? 'N/A' }}</td>
+                                    <td class="{{ $booking->status === 'Accepted' ? 'text-success' : ($booking->status === 'Rejected' ? 'text-danger' : 'text-warning') }}">
+                                        {{ $booking->status }}
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
